@@ -1,4 +1,4 @@
 # Dev Book
 
-[cli](./cli/docker/docker.md)
+[cli](./cli/cli.md)
 
