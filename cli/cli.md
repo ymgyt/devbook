@@ -1,13 +1,14 @@
 # CLI
 
 ## container
-[docker](./docker/docker.md)
+* [docker](./docker/docker.md)
+* [k8s](./k8s/k8s.md)
 
 ## network
-[curl](./curl.md)
+* [curl](./network/curl.md)
 
 ## file
-[tar](./tar.md)
+* [tar](./file/tar.md)
 
 ## gRPC
-[evans](./evans.md)
+* [grpcurl](grpc/grpcurl.md)
