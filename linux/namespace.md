@@ -1,0 +1,5 @@
+# Namespace
+
+processが参照するPIDやmount point等のkernel resourceを他のprocessから隔離する機能。  
+すべてのprocessはnamespaceをもち、指定がない限り親processと同じnamespaceを参照する。  
+結果的にPID1と同じnamespaceになる。
