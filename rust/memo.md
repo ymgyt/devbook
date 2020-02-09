@@ -29,6 +29,18 @@ Since Rc contains two Cell fields, their !Sync markers propagate to the entire R
 Rc is also marked !Send — unsafe to send (move) to other threads.
 
 
+## `?Sized`
+
+```rust
+struct Ref<T: ?Sized>
+```
+
+とすると、自動的につけられる`T: Sized`という制約を剥がすことができる。これによりTにはサイズ不定形がとれるようになる
+
+* `Ref<dyn Fn() -> i32>`
+* `Ref<dyn Any>`
+* `Ref<str>`
+* `Ref<[T]>`
 
 ## Raw pointers
 

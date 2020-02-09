@@ -76,3 +76,45 @@ fn main() {
 ```
 
 https://play.rust-lang.org/?gist=bd01037fd9b9bb3d1a15bde61f580c6f
+
+
+```rust
+use std::sync::{Arc, Mutex, Weak};
+
+#[derive(Debug, Clone)]
+pub struct Graph(Arc<Mutex<Vec<Arc<Mutex<NodeInner>>>>>);
+
+impl Graph {
+    pub fn new() -> Self {
+        Self(Arc::new(Mutex::new(Vec::new())))
+    }
+
+    pub fn new_node(&self) -> Node {
+        let node = Arc::new(Mutex::new(NodeInner {
+            neighbors: Vec::new(),
+        }));
+        let node_weak = Node(Arc::downgrade(&node));
+        let mut lock = self.0.lock().unwrap();
+        lock.push(node);
+        node_weak
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct Node(Weak<Mutex<NodeInner>>);
+
+impl Node {
+    pub fn push(&self, neighbor: Node) {
+        let rc = self.0.upgrade().expect("The graph is dead");
+        let mut lock = rc.lock().unwrap();
+        lock.neighbors.push(neighbor);
+    }
+}
+
+#[derive(Debug)]
+struct NodeInner {
+    neighbors: Vec<Node>,
+}
+```
+
+https://qiita.com/qnighy/items/4bbbb20e71cf4ae527b9
