@@ -139,3 +139,13 @@ fn main() {
 
 trait objectとよばれる機能でRustは動的dispatchを提供している。  
 `&Foo`や`Box<Foo>`のように記述され、指定されたtraitを実装するあらゆる型の値を保持する通常の値。
+
+## slice
+
+先頭の変数のアドレスと長さの情報をもった2wordな変数。
+
+* `[T]`はスタック領域に連続して表現される
+* `Vec<T>`はスタック領域に「実データへのポインタ」「len」「cap」を持つ
+* `&str`はスタック領域に「実データへのポインタ」「len」を持つ
+
+https://cipepser.hatenablog.com/entry/rust-memory
