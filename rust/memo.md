@@ -149,3 +149,25 @@ trait objectとよばれる機能でRustは動的dispatchを提供している�
 * `&str`はスタック領域に「実データへのポインタ」「len」を持つ
 
 https://cipepser.hatenablog.com/entry/rust-memory
+
+## `const`/`static`
+
+### static
+static values appear in single location in memory.  
+staticという言葉はaddress spaceのsegmentから来ている。
+
+### const
+const values may be duplicated in locations where they're accessed.  
+constをduplicatingするのはdataのlocalityの観点からCPU friendly.
+
+## function pointer
+
+`fn` keywordはfunction pointerを作っている。
+
+
+## intrinsics
+
+compilerが作ってくれる関数.
+
+
+
